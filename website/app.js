@@ -1,5 +1,3 @@
-const bodyParser = require("body-parser");
-
 // Global variables
 const zip = document.getElementById('zip').value;
 const feelings = document.getElementById('feelings').value;
@@ -15,11 +13,6 @@ let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 const APINum = '8078fdbb772a5ceb4d5cffae1b5c3e9c';
 const OWMURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 
-// Event listener to add function to existing HTML DOM element
-const generateWeatherBtn = document.getElementById('generate');
-generateWeatherBtn.addEventListener('click', generateWeatherFunc);
-
-/* Function called by event listener */
 const generateWeatherFunc = () => {
     getWeatherInfo(OWMURL, APINum, zip)
     .then( data =>
@@ -28,7 +21,7 @@ const generateWeatherFunc = () => {
 }
 
 const getWeatherInfo = async (url, apiId, zipNum) => {
-    const res = await fetch(`${url}${zipNum}&appid=${apiId}`)
+    const res = await fetch(`${url}${zipNum}&appid=${apiId}&units=imperial`)
     try {
         const data = await res.json();
         return data;
@@ -55,12 +48,21 @@ const postData = async (url='', data={}) => {
 const updateUserInterface = async (url) => {
     const req = await fetch(url);
     try {
-        const userData = await request.json();
+        const userData = await req.json();
         _data.innerHTML = userData[0].date;
         _temp.innerHTML = userData[0].temp;
         _content.innerHTML = userData[0].feelings;
+        console.log(userData);
+        return userData;
     } catch(error) {
         console.log('error', error);
     };
 }
+
+// Event listener to add function to existing HTML DOM element
+const generateWeatherBtn = document.getElementById('generate');
+generateWeatherBtn.addEventListener('click', generateWeatherFunc());
+
+/* Function called by event listener */
+
 
