@@ -1,5 +1,6 @@
 body{
-    background: #fffff8;
+    background: url(bg.jpg);
+    background-size: cover;
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
@@ -16,7 +17,7 @@ body{
 }
 
 .entry{
-    background: #EEE;
+    background: rgba(243, 204, 204, 0.5);
     border: 1px solid #CCC;
 }
 
@@ -46,7 +47,7 @@ input{
     padding: 10px;
     font-size: 25px;
     margin: 15px 0;
-    background: #EEE;
+    background: rgba(243, 204, 204, 0.2);
     border: 1px solid #CCC;
 }
 
@@ -55,7 +56,7 @@ button{
     font-size: 25px;
     display: block;
     margin: 15px auto;
-    background: #EEE;
+    background: rgba(243, 204, 204, 0.2);
     border: 1px solid #CCC;
     cursor: pointer;
 }
@@ -65,7 +66,7 @@ h1{
 }
 
 textarea{
-    background: #EEE;
+    background: rgba(243, 204, 204, 0.2);
     border: 1px solid #CCC;
     color: #000;
     font-size: 25px;
