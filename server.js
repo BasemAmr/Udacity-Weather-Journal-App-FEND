@@ -25,7 +25,7 @@ const port = 5050;
 const listening = () => {console.log(`server is runnig on localhost:${port}`)}
 const server = app.listen(port, listening());
 
-// Callback function to complete GET '/all'
+// Callback function to complete GET '/info'
 app.get('/info', function (req, res) {
     res.send(projectData);
 });
