@@ -22,8 +22,6 @@ function generateWeatherFunc(event) {
     
     getWeatherInfo(OWMURL, zip, APINum)
     .then(data => {
-        // let date = new Date(data.dt * 1000)
-        // let date_str = date.getFullYear() + '-' + (date.getMonth()+1) + '-' + date.getDate();
         postData('/data', {temperature: data.main.temp, date: newDate, feelings: UserFeelings});
         updateUserInterface('/info');
     })
@@ -31,7 +29,7 @@ function generateWeatherFunc(event) {
 
 /* Function to GET Web API Data */
 const getWeatherInfo = async (url, zipNum, appId) => {
-    const res  = await fetch(url + 94040 + '&appid=' + appId );
+    const res  = await fetch(url + zipNum + '&appid=' + appId );
     try {
         const data = await res.json();
         return data;
@@ -59,7 +57,6 @@ const postData = async (url = '', data = {}) => {
     };
 };
 
-/* Function to GET Project Data */
 const updateUserInterface = async(url='') => {
     const req = await fetch(url);
     try {
