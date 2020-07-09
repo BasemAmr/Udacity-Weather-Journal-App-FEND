@@ -25,13 +25,13 @@ const port = 5050;
 const listening = () => {console.log(`server is runnig on localhost:${port}`)}
 const server = app.listen(port, listening());
 
-// GET route returns projectData
-app.get('/all', function (req, res) {
+// Callback function to complete GET '/all'
+app.get('/info', function (req, res) {
     res.send(projectData);
 });
 
-// POST route adds data to ProjectData
-app.post('/add', function (req, res) {
+// POST Route
+app.post('/data', function (req, res) {
     userData = {
         temperature: req.body.temperature,
         date: req.body.date,
