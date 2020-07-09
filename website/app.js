@@ -15,10 +15,10 @@ const OWMURL = 'https://api.openweathermap.org/data/2.5/weather?zip=';
 
 const generateWeatherFunc = () => {
     getWeatherInfo(OWMURL, APINum, zip)
-    .then( data =>
-    postData('/data', {temp: data.main.temp, date: newDate, feelings: feelings}),
-    updateUserInterface('/info') )
-}
+    .then( data =>{
+    postData('/data', {temp: data.main.temp, date: newDate, feelings: feelings});
+    updateUserInterface('/info') } )
+    }
 
 const getWeatherInfo = async (url, apiId, zipNum) => {
     const res = await fetch(`${url}${zipNum}&appid=${apiId}&units=imperial`)
@@ -34,7 +34,8 @@ const postData = async (url='', data={}) => {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
         },
         body: JSON.stringify(data)
     });
